@@ -1,0 +1,44 @@
+#Turn off all booleans which allow domain execmem/execstack
+deny_execmem:
+# Determine whether boinc can execmem/execstack.
+      - { name: 'boinc_execmem', state: 'off', persistent: 'yes' }
+
+# Allow cluster administrative cluster domains memcheck-amd64- to use executable memory
+      - { name: 'cluster_use_execmem', state: 'off', persistent: 'yes' }
+
+# Allow cups execmem/execstack
+      - { name: 'cups_execmem', state: 'off', persistent: 'yes' }
+
+# Deny user domains applications to map a memory region as both executable and writable
+      - { name: 'deny_execmem', state: 'on', persistent: 'yes' }
+
+# Allow glance domain to use executable memory and executable stack
+      - { name: 'glance_use_execmem', state: 'off', persistent: 'yes' }
+
+# Allow glusterd_t domain to use executable memory
+      - { name: 'gluster_use_execmem', state: 'off', persistent: 'yes' }
+
+# Allow httpd scripts and modules execmem/execstack
+      - { name: 'httpd_execmem', state: 'off', persistent: 'yes' }
+
+# Determine whether mplayer can make its stack executable
+      - { name: 'mplayer_execstack', state: 'off', persistent: 'yes' }
+
+# Allow unconfined executables to make their heap memory executable. Doing this is a really bad idea. Probably indicates a badly coded executable, but could indicate an attack. This executable should be reported in bugzilla
+      - { name: 'selinuxuser_execheap', state: 'off', persistent: 'yes' }
+
+# Allow all unconfined executables to use libraries requiring text relocation that are not labeled textrel_shlib_t
+      - { name: 'selinuxuser_execmod', state: 'off', persistent: 'yes' }
+
+# Allow unconfined executables to make their stack executable. This should never, ever be necessary. Probably indicates a badly coded executable, but could indicate an attack. This executable should be reported in bugzilla
+      - { name: 'selinuxuser_execstack', state: 'off', persistent: 'yes' }
+
+# Allow tomcat to use executable memory and executable stack
+      - { name: 'tomcat_use_execmem', state: 'off', persistent: 'yes' }
+
+# Allow confined virtual guests to use executable memory and executable stack
+      - { name: 'virt_use_execmem', state: 'off', persistent: 'yes' }
+
+# Allows XServer to execute writable memory
+      - { name: 'xserver_execmem', state: 'off', persistent: 'yes' }
+

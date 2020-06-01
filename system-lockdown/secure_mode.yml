@@ -1,0 +1,5 @@
+selinux_booleans:
+    - { name: 'secure_mode', state: 'on', persistent: 'yes' }
+    - { name: 'secure_mode_insmod', state: 'on', persistent: 'yes' }
+    - { name: 'secure_mode_policyload', state: 'on', persistent: 'yes' }
+

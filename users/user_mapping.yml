@@ -1,0 +1,5 @@
+#Usage:
+#  - { login: '<username>', seuser: '<selinux_user>', state: '<absent/present>'}
+
+user_mapping:
+  - { login: '__default__', seuser: 'staff_u', state: 'present' }

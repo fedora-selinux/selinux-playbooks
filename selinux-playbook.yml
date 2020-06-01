@@ -1,0 +1,41 @@
+---
+- name: "Hardening SELinux"
+  hosts: localhost
+  become: true
+  become_method: sudo
+  become_user: root
+
+  pre_tasks:
+    - name: install policycoreutils-python-utils
+      package:
+	name: policycoreutils-python-utils
+        state: latest
+
+    - name: save configuration
+      shell: semanage -o ~/.defaultconf
+      ignore_errors: yes
+
+    - name: disable unconfined module
+      shell: semodule -d unconfined
+      ignore_errors: yes
+
+    - name: disable permissive domains
+      shell: semodule -d permissivedomains
+      ignore_errors: yes
+
+  vars_files:
+    # booleans hardening
+    - files/cant_connect.yml
+    - files/deny_execmem.yml
+    - files/deny_export.yml
+    # users mapping
+    - users/user_mapping.yml
+
+  vars:
+    selinux_policy: targeted
+    selinux_state: enforcing
+    selinux_booleans: "{{ cant_connect }} + {{ deny_execmem }} + {{ deny_export }}"
+    selinux_logins: "{{ user_mapping }}"
+
+  roles:
+    - linux-system-roles.selinux

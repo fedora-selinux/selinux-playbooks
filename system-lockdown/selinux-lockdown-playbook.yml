@@ -1,0 +1,17 @@
+---
+- name: "Lockdown system with SELinux"
+  hosts: localhost
+  become: true
+  become_method: sudo
+  become_user: root
+
+  vars:
+    selinux_policy: targeted
+    selinux_state: enforcing
+
+  vars_files:
+    - secure_mode.yml
+
+  roles:
+    - linux-system-roles.selinux
+

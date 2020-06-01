@@ -1,0 +1,31 @@
+---
+- name: "Revert Hardening SELinux"
+  hosts: local
+  become: true
+  become_method: sudo
+  become_user: root
+
+  vars:
+    selinux_policy: targeted
+    selinux_state: enforcing
+    selinux_all_purge: true
+
+  vars_prompt:
+    - name: reboot
+      prompt: "Reboot now? (yes/no)"
+      private: no
+
+  tasks:
+  - name: import default configuration.
+    shell: semanage -i ~/.defaultconf
+    ignore_errors: true
+
+
+  post_tasks:
+    - name: Rebooting
+      when: reboot == "yes"
+      command: reboot
+
+  roles:
+    - linux-system-roles.selinux
+

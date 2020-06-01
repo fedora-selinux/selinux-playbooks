@@ -1,0 +1,42 @@
+deny_export:
+### Gluster ###
+
+# Allow glusterfsd to modify public files used for public file transfer services. Files/Directories must be labeled public_content_rw_t.
+      - { name: 'gluster_anon_write', state: 'off', persistent: 'yes' }
+
+# Allow glusterfsd to share any file/directory read/write
+      - { name: 'gluster_export_all_rw', state: 'off', persistent: 'yes' }
+
+# Allow glusterfsd to share any file/directory read only.
+      - { name: 'gluster_export_all_ro', state: 'off', persistent: 'yes' }
+
+### NFS ###
+
+# Allow nfs servers to modify public files used for public file transfer services. Files/Directories must be labeled public_content_rw_t
+      - { name: 'nfsd_anon_write', state: 'off', persistent: 'yes' }
+
+# Allow nfs to export all read/write
+      - { name: 'nfs_export_all_rw', state: 'off', persistent: 'yes' }
+
+# Allow nfs to export all read only.
+      - { name: 'nfs_export_all_ro', state: 'off', persistent: 'yes' }
+
+### Samba ###
+
+# Allow samba to modify public files used for public file transfer services.  Files/Directories must be labeled public_content_rw_t.
+      - { name: 'smbd_anon_write', state: 'off', persistent: 'yes' }
+
+# Allow samba to share users home directories.
+      - { name: 'samba_enable_home_dirs', state: 'off', persistent: 'yes' }
+
+# Allow samba to export all read/write
+      - { name: 'samba_export_all_rw', state: 'off', persistent: 'yes' }
+
+# Allow samba to export all read only.
+      - { name: 'samba_export_all_ro', state: 'off', persistent: 'yes' }
+
+# Allow samba to export ntfs/fusefs volumes.
+      - { name: 'samba_share_fusefs', state: 'off', persistent: 'yes' }
+
+# Allow samba to export NFS volumes.
+      - { name: 'samba_share_nfs', state: 'off', persistent: 'yes' }

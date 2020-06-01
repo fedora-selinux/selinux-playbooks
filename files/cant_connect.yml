@@ -1,0 +1,204 @@
+#Turn off all booleans which allow domain connect to any network port
+cant_connect:
+
+# Allow cluster administrative domains to connect to the network using TCP.
+      - { name: 'cluster_can_network_connect', state: 'off', persistent: 'yes' }
+
+# Determine whether Cobbler can connect to the network using TCP.
+      - { name: 'cobbler_can_network_connect', state: 'off', persistent: 'yes' }
+
+# Determine whether collectd can connect to the network using TCP.
+      - { name: 'collectd_tcp_network_connect', state: 'off', persistent: 'yes' }
+
+# Determine whether conman can connect to all TCP ports
+      - { name: 'conman_can_network', state: 'off', persistent: 'yes' }
+
+# Determine whether Condor can connect to the network using TCP.
+      - { name: 'condor_tcp_network_connect', state: 'off', persistent: 'yes' }
+
+# Determine whether exim can connect to databases.
+      - { name: 'exim_can_connect_db', state: 'off', persistent: 'yes' }
+
+# Determine whether fenced can connect to the TCP network.
+      - { name: 'fenced_can_network_connect', state: 'off', persistent: 'yes' }
+
+# Determine whether ftpd can connect to all unreserved ports.
+      - { name: 'ftpd_connect_all_unreserved', state: 'off', persistent: 'yes' }
+
+# Determine whether ftpd can bind to all unreserved ports for passive mode.
+      - { name: 'ftpd_use_passive_mode', state: 'off', persistent: 'yes' }
+
+# Determine whether ftpd can connect to databases over the TCP network.
+      - { name: 'ftpd_connect_db', state: 'off', persistent: 'yes' }
+
+# Determine whether Git session daemon can bind TCP sockets to all unreserved ports.
+      - { name: 'git_session_bind_all_unreserved_ports', state: 'off', persistent: 'yes' }
+
+# Determine whether glance-api can connect to all TCP ports
+      - { name: 'glance_api_can_network', state: 'off', persistent: 'yes' }
+
+# Determine whether haproxy can connect to all TCP ports.
+      - { name: 'haproxy_connect_any', state: 'off', persistent: 'yes' }
+
+# Allow httpd to act as a FTP client connecting to the ftp port and ephemeral ports
+      - { name: 'httpd_can_connect_ftp', state: 'off', persistent: 'yes' }
+
+# Allow httpd to connect to the ldap port
+      - { name: 'httpd_can_connect_ldap', state: 'off', persistent: 'yes' }
+
+# Allow http daemon to connect to mythtv
+      - { name: 'httpd_can_connect_mythtv', state: 'off', persistent: 'yes' }
+
+# Allow http daemon to connect to zabbix
+      - { name: 'httpd_can_connect_zabbix', state: 'off', persistent: 'yes' }
+
+# Allow HTTPD scripts and modules to connect to the network using TCP.
+      - { name: 'httpd_can_network_connect', state: 'off', persistent: 'yes' }
+
+# Allow HTTPD scripts and modules to connect to cobbler over the network.
+      - { name: 'httpd_can_network_connect_cobbler', state: 'off', persistent: 'yes' }
+
+# Allow HTTPD scripts and modules to connect to databases over the network.
+      - { name: 'httpd_can_network_connect_db', state: 'off', persistent: 'yes' }
+
+# Allow httpd to connect to memcache server
+      - { name: 'httpd_can_network_memcache', state: 'off', persistent: 'yes' }
+
+# Allow httpd to act as a relay
+      - { name: 'httpd_can_network_relay', state: 'off', persistent: 'yes' }
+
+# Allow httpd to act as a FTP server by listening on the ftp port.
+      - { name: 'httpd_enable_ftp_server', state: 'off', persistent: 'yes' }
+
+# Allow HTTPD to connect to port 80 for graceful shutdown
+      - { name: 'httpd_graceful_shutdown', state: 'off', persistent: 'yes' }
+
+# Allow httpd to access openstack ports
+      - { name: 'httpd_use_openstack', state: 'off', persistent: 'yes' }
+
+# Allow httpd to connect to sasl
+      - { name: 'httpd_use_sasl', state: 'off', persistent: 'yes' }
+
+# Determine whether icecast can listen on and connect to any TCP port.
+      - { name: 'icecast_use_any_tcp_ports', state: 'off', persistent: 'yes' }
+
+# Determine whether irc clients can listen on and connect to any unreserved TCP ports.
+      - { name: 'irc_use_any_tcp_ports', state: 'off', persistent: 'yes' }
+
+# Allow the Irssi IRC Client to connect to any port, and to bind to any unreserved port.
+      - { name: 'irssi_use_full_network', state: 'off', persistent: 'yes' }
+
+# Determine whether keepalived can connect to all TCP ports.
+      - { name: 'keepalived_connect_any', state: 'off', persistent: 'yes' }
+
+# Determine whether logwatch can connect to mail over the network.
+      - { name: 'logwatch_can_network_connect_mail', state: 'off', persistent: 'yes' }
+
+# Determine whether lsmd_plugin can connect to all TCP ports.
+      - { name: 'lsmd_plugin_connect_any', state: 'off', persistent: 'yes' }
+
+# Allow mozilla plugin domain to bind unreserved tcp/udp ports.
+      - { name: 'mozilla_plugin_bind_unreserved_ports', state: 'off', persistent: 'yes' }
+
+# Allow mozilla plugin domain to connect to the network using TCP.
+      - { name: 'mozilla_plugin_can_network_connect', state: 'off', persistent: 'yes' }
+
+# Allow mysqld to connect to all ports
+      - { name: 'mysql_connect_any', state: 'off', persistent: 'yes' }
+
+# Allow mysqld to connect to http port
+      - { name: 'mysql_connect_http', state: 'off', persistent: 'yes' }
+
+# Determine whether Bind can bind tcp socket to http ports.
+      - { name: 'named_tcp_bind_http_port', state: 'off', persistent: 'yes' }
+
+# Determine whether neutron can connect to all TCP ports
+      - { name: 'neutron_can_network', state: 'off', persistent: 'yes' }
+
+# Determine whether openvpn can connect to the TCP network.
+      - { name: 'openvpn_can_network_connect', state: 'off', persistent: 'yes' }
+
+# Allow pcp to bind to all unreserved_ports
+      - { name: 'pcp_bind_all_unreserved_ports', state: 'off', persistent: 'yes' }
+
+# Allow PowerDNS to connect to databases over the network.
+      - { name: 'pdns_can_network_connect_db', state: 'off', persistent: 'yes' }
+
+# Allow piranha-lvs domain to connect to the network using TCP.
+      - { name: 'piranha_lvs_can_network_connect', state: 'off', persistent: 'yes' }
+
+# Determine whether Polipo session daemon can bind tcp sockets to all unreserved ports.
+      - { name: 'polipo_session_bind_all_unreserved_ports', state: 'off', persistent: 'yes' }
+
+# Allow polipo to connect to all ports > 1023
+      - { name: 'polipo_connect_all_unreserved', state: 'off', persistent: 'yes' }
+
+# Determine whether privoxy can connect to all tcp ports.
+      - { name: 'privoxy_connect_any', state: 'off', persistent: 'yes' }
+
+# Permit to prosody to bind apache port. Need to be activated to use BOSH.
+      - { name: 'prosody_bind_http_port', state: 'off', persistent: 'yes' }
+
+# Allow samba to act as a portmapper
+      - { name: 'samba_portmapper', state: 'off', persistent: 'yes' }
+
+# Allow users to connect to the local mysql server
+      - { name: 'selinuxuser_mysql_connect_enabled', state: 'off', persistent: 'yes' }
+
+# Allow users to connect to PostgreSQL
+      - { name: 'selinuxuser_postgresql_connect_enabled', state: 'off', persistent: 'yes' }
+
+# Allow users to run TCP servers (bind to ports and accept connection from the same domain and outside users) disabling this forces FTP passive mode and may change other protocols.
+      - { name: 'selinuxuser_tcp_server', state: 'off', persistent: 'yes' }
+
+# Allow users to run UDP servers (bind to ports and accept connection from the same domain and outside users) disabling this may break avahi discovering services on the network and other udp related services.
+      - { name: 'selinuxuser_udp_server', state: 'off', persistent: 'yes' }
+
+# Allow sge to connect to the network using any TCP port
+      - { name: 'sge_domain_can_network_connect', state: 'off', persistent: 'yes' }
+
+# Allow user spamassassin clients to use the network.
+      - { name: 'spamassassin_can_network', state: 'off', persistent: 'yes' }
+
+# Allow spamd_update to connect to all ports.
+      - { name: 'spamd_update_can_network', state: 'off', persistent: 'yes' }
+
+# Determine whether squid can connect to all TCP ports.
+      - { name: 'squid_connect_any', state: 'off', persistent: 'yes' }
+
+# Determine whether sslh can listen on any tcp port or if it is restricted to the standard http.
+      - { name: 'sslh_can_bind_any_port', state: 'off', persistent: 'yes' }
+
+# Determine whether sslh can connect to any tcp port or if it is restricted to the standard http, openvpn and jabber ports.
+      - { name: 'sslh_can_connect_any_port', state: 'off', persistent: 'yes' }
+
+# Determine whether swift can connect to all TCP ports
+      - { name: 'swift_can_network', state: 'off', persistent: 'yes' }
+
+# Allow the Telepathy connection managers to connect to any network port.
+      - { name: 'telepathy_connect_all_ports', state: 'off', persistent: 'yes' }
+
+# Allow the Telepathy connection managers to connect to any generic TCP port.
+      - { name: 'telepathy_tcp_connect_generic_network_ports', state: 'off', persistent: 'yes' }
+
+# Allow tomcat to connect to databases over the network.
+      - { name: 'tomcat_can_network_connect_db', state: 'off', persistent: 'yes' }
+
+# Determine whether tor can bind tcp sockets to all unreserved ports.
+      - { name: 'tor_bind_all_unreserved_ports', state: 'off', persistent: 'yes' }
+
+# Allow tor to act as a relay
+      - { name: 'tor_can_network_relay', state: 'off', persistent: 'yes' }
+
+# Determine whether varnishd can use the full TCP network.
+      - { name: 'varnishd_connect_any', state: 'off', persistent: 'yes' }
+
+# Allow confined virtual guests to use serial/parallel communication ports
+      - { name: 'virt_use_execmem', state: 'off', persistent: 'yes' }
+
+# Allows xdm_t to bind on vnc_port_t
+      - { name: 'xdm_bind_vnc_tcp_port', state: 'off', persistent: 'yes' }
+
+# Determine whether zabbix can connect to all TCP ports
+      - { name: 'zabbix_can_network', state: 'off', persistent: 'yes' }
+
