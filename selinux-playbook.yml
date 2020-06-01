@@ -8,7 +8,7 @@
   pre_tasks:
     - name: install policycoreutils-python-utils
       package:
-	name: policycoreutils-python-utils
+        name: policycoreutils-python-utils
         state: latest
 
     - name: save configuration
