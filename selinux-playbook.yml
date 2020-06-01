@@ -10,6 +10,14 @@
       package:
         name: policycoreutils-python-utils
         state: latest
+      when: ansible_distribution == 'Fedora'
+
+    - name: install policycoreutils-python
+      package:
+	name: policycoreutils-python
+        state: latest
+      when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat
+Enterprise Linux'
 
     - name: save configuration
       shell: semanage -o ~/.defaultconf
