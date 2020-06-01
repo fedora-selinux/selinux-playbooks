@@ -10,7 +10,7 @@ The Ansible tool has to be installed to configure and apply playbooks.  For SELi
 Download SELinux configuration in Ansible:
 
 ```
-$ git  clone  https :// gitlab.com/5umm3r15/selinux-hardening.git
+$ git clone https://gitlab.com/5umm3r15/selinux-hardening.git
 ```
 ## Configuration
 
