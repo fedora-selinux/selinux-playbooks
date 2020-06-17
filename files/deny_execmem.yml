@@ -12,6 +12,9 @@ deny_execmem:
 # Deny user domains applications to map a memory region as both executable and writable
       - { name: 'deny_execmem', state: 'on', persistent: 'yes' }
 
+#  Deny any process from ptracing or debugging any other processes.
+      - { name: 'deny_ptrace', state: 'on', persistent: 'yes' }
+
 # Allow glance domain to use executable memory and executable stack
       - { name: 'glance_use_execmem', state: 'off', persistent: 'yes' }
 
