@@ -1,0 +1,6 @@
+# Disable unconfined and permissive domains
+manage_modules:
+# Unconfined domains run with no or few restrictions but do not log any requested access
+      - {name: 'unconfined', state: 'disabled'}
+# Permissive domains are individual domains that are specified to run in permissive mode and log access what would be denied
+      - {name: 'permissivedomains', state: 'disabled'}

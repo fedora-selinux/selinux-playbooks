@@ -2,9 +2,9 @@
 SELinux is a flexible and powerful technology, which can be easily configured to mitigate the technical impacts of many weaknesses and vulnerabilities. SELinux is shipped with a default configuration that does not require ordinary user intervention. However, usability comes at the expense of security. SELinux has a lot of useful security features and protections that can be used to harden security, without limitations.
 More information about real-world benefits and examples can be found in the article *[SELinux as a security pillar of an operating system ](https://access.redhat.com/articles/6964380)*.
 
-Ansible is an automation tool that provides management of multiple hosts, nodes with SSH. Ansible has to be installed on one control node, which manages other hosts. It uses a playbook, which contains a set of instructions, applied on hosts.
+Ansible is an automation tool that provides management of multiple hosts, nodes with SSH. Ansible has to be installed on one control node, which manages other hosts. It uses a playbook, where a set of instructions is applied to hosts.
 
-In the selinux-playbook is loaded SELinux role and local SELinux modifications are extracted to the file .defaultconf. Next, unconfined module and permissive domains are disabled. After that, it sequentially executes all defined tasks. Booleans configuration is based on files cant_connect.yml, deny_execmem.yml and deny_export.yml, which denies the domains connecting to the port, export files or execute the memory/ heap/ stack. In the next step, Linux users are mapped into the SELinux policy. 
+In the selinux-playbook is loaded SELinux role and local SELinux modifications are extracted to the file .defaultconf. Next, it sequentially executes all defined tasks. Booleans configuration is based on files cant_connect.yml, deny_execmem.yml and deny_export.yml, which denies the domains connecting to the port, export files or execute the memory/ heap/ stack. In the next step, Linux users are mapped into the SELinux policy. After that, unconfined module and permissive domains are disabled. 
 Moreover, configurations were designed that allow users to revert SELinux deployed configurations and to lockdown the SELinux system to prevent any modifications.
 
 ## Installation
@@ -12,16 +12,12 @@ The Ansible tool has to be installed to configure and apply playbooks.  For SELi
 
 ### Fedora
 ```
-# dnf install ansible
-# ansible-galaxy install linux-system-roles.selinux
+# dnf install linux-system-roles
 ```
 
 ### RHEL9
 ```
-# dnf install ansible*
-# ansible-galaxy install linux-system-roles.selinux
-# ansible-galaxy collection install community.general ansible.posix
-
+# dnf install rhel-system-roles
 ```
 
 ## Configuration
@@ -151,7 +147,11 @@ To prevent unauthorized connection or transfer of information, all booleans whic
 | mysql_connect_any		|Allow mysqld to connect to all ports | off |
 | mysql_connect_http    | Allow mysqld to connect to http port | off |
 
-## Run Ansile playbook
+### Selinux_modules
+
+SELinux modules unconfined and permissivedomains are disabled in */files/modules.yml*
+
+## Run Ansible playbook
 
 ```
 $ cd selinux-hardening

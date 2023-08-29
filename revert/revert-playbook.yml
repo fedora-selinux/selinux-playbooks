@@ -18,7 +18,7 @@
 
   tasks:
   - name: import default configuration.
-    shell: semanage -i ~/.defaultconf
+    command: semanage -i ~/.defaultconf
     ignore_errors: true
 
 

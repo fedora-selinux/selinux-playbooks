@@ -20,15 +20,7 @@
       when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
     - name: save configuration
-      shell: semanage -o ~/.defaultconf
-      ignore_errors: yes
-
-    - name: disable unconfined module
-      shell: semodule -d unconfined
-      ignore_errors: yes
-
-    - name: disable permissive domains
-      shell: semodule -d permissivedomains
+      command: semanage -o ~/.defaultconf
       ignore_errors: yes
 
   vars_files:
@@ -36,6 +28,8 @@
     - files/cant_connect.yml
     - files/deny_execmem.yml
     - files/deny_export.yml
+    # disable modules
+    - files/modules.yml
     # users mapping
     - users/user_mapping.yml
 
@@ -44,6 +38,7 @@
     selinux_state: enforcing
     selinux_booleans: "{{ cant_connect + deny_execmem + deny_export }}"
     selinux_logins: "{{ user_mapping }}"
+    selinux_modules: "{{ manage_modules }}"
 
   roles:
     - linux-system-roles.selinux
