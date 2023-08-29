@@ -18,12 +18,13 @@ The Ansible tool has to be installed to configure and apply playbooks.  For SELi
 
 ```
 
+## Configuration
+
 Download SELinux configuration in Ansible:
 
 ```
-$ git clone https://gitlab.com/5umm3r15/selinux-hardening.git
+$ git clone https://github.com/5umm3r15/SELinux-hardening.git
 ```
-## Configuration
 
 ### Hosts
 Currently, a configuration is targeted on the localhost.  In the directory inventory is the file hosts.yaml, in which can be defined hosts.

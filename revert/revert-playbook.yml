@@ -4,6 +4,7 @@
   become: true
   become_method: sudo
   become_user: root
+  ignore_errors: true
 
   vars:
     selinux_policy: targeted
