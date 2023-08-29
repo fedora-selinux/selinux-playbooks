@@ -115,6 +115,9 @@ cant_connect:
 # Determine whether neutron can connect to all TCP ports
       - { name: 'neutron_can_network', state: 'off', persistent: 'yes' }
 
+# Determine whether openfortivpn can connect to the TCP network.
+      - { name: 'openfortivpn_can_network_connect', state: 'off', persistent: 'yes' }
+
 # Determine whether openvpn can connect to the TCP network.
       - { name: 'openvpn_can_network_connect', state: 'off', persistent: 'yes' }
 
@@ -163,8 +166,14 @@ cant_connect:
 # Allow spamd_update to connect to all ports.
       - { name: 'spamd_update_can_network', state: 'off', persistent: 'yes' }
 
+# Determine whether squid should have access to snmp port.
+      - { name: 'squid_bind_snmp_port', state: 'off', persistent: 'yes' }
+
 # Determine whether squid can connect to all TCP ports.
       - { name: 'squid_connect_any', state: 'off', persistent: 'yes' }
+
+# Allow sssd connect to all unreserved ports
+      - { name: 'sssd_connect_all_unreserved_ports', state: 'off', persistent: 'yes' }
 
 # Determine whether sslh can listen on any tcp port or if it is restricted to the standard http.
       - { name: 'sslh_can_bind_any_port', state: 'off', persistent: 'yes' }
@@ -174,6 +183,9 @@ cant_connect:
 
 # Determine whether swift can connect to all TCP ports
       - { name: 'swift_can_network', state: 'off', persistent: 'yes' }
+
+# Allow systemd-socket-proxyd to connect to any port instead of labelled ones.
+      - { name: 'systemd_socket_proxyd_connect_any', state: 'off', persistent: 'yes' }
 
 # Allow the Telepathy connection managers to connect to any network port.
       - { name: 'telepathy_connect_all_ports', state: 'off', persistent: 'yes' }

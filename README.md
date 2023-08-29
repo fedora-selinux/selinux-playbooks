@@ -3,10 +3,21 @@ SELinux is a flexible and powerful technology, which can be easily configured to
 
 ## Installation
 The Ansible tool has to be installed to configure and apply playbooks.  For SELinux configuration, Ansible also needs the SELinux role to be installed.  All necessary packages are installed by following commands:
+
+### Fedora
 ```
-# dnf install ansible 
+# dnf install ansible
 # ansible-galaxy install linux-system-roles.selinux
 ```
+
+### RHEL9
+```
+# dnf install ansible*
+# ansible-galaxy install linux-system-roles.selinux
+# ansible-galaxy collection install community.general ansible.posix
+
+```
+
 Download SELinux configuration in Ansible:
 
 ```
@@ -137,7 +148,7 @@ To prevent unauthorized connection or transfer of information, all booleans whic
 
 ```
 $ cd selinux-hardening
-# ansible-playbook selinux-playbook.yml
+# ansible-playbook selinux-playbook.yml -i inventory/hosts
 ```
 
 
@@ -145,9 +156,10 @@ $ cd selinux-hardening
 
 To return the SELinux configuration to before Ansible configuration, the revert option was added in **./revert/revert-playbook.yml**.Hosts are defined in the directory Inventory, in the file hosts.yaml, currently targeted on the localhost. When running this playbook, the user is asked if he wants to reboot the system. If yes, the system is rebooted afterward.
 
+
 Run Revert playbook:
 ```
-# ansible-playbook revert/revert-playbook.yml
+# ansible-playbook revert/revert-playbook.yml -i inventory/hosts
 ```
 
 
@@ -166,9 +178,8 @@ For system lockdown, there is another playbook, located in **system-lockdown/sel
 When the last boolean, secure_mode_policyload, is enabled, users can onlydisable SELinux policy, during booting, by editing boot configuration. This playbook should be executed only when the user knows what he is doing. Hosts are again targeted on the localhost and can be defined in the directory Inventory in the file hosts.yaml. If this playbook is executed, with all secure booleans enabled, users will not beable to revert system lockdown, by executing the revert playbook. Moreover, userswill not be able to perform any operations with SELinux
 
 
-
 Run system-lockdown playbook:
 ```
-# ansible-playbook system-lockdown/selinux-lockdown-playbook.yml
+# ansible-playbook system-lockdown/selinux-lockdown-playbook.yml -i inventory/hosts
 ```
 

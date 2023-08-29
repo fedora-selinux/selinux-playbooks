@@ -1,6 +1,6 @@
 ---
 - name: "Lockdown system with SELinux"
-  hosts: localhost
+  hosts: all
   become: true
   become_method: sudo
   become_user: root

@@ -21,6 +21,11 @@ deny_export:
 # Allow nfs to export all read only.
       - { name: 'nfs_export_all_ro', state: 'off', persistent: 'yes' }
 
+### Rsync ###
+
+# Allow rsync to export any files/directories read only.
+      - { name: 'rsync_export_all_ro', state: 'off', persistent: 'yes' }
+
 ### Samba ###
 
 # Allow samba to modify public files used for public file transfer services.  Files/Directories must be labeled public_content_rw_t.

@@ -1,6 +1,6 @@
 ---
 - name: "Revert Hardening SELinux"
-  hosts: localhost
+  hosts: all
   become: true
   become_method: sudo
   become_user: root
@@ -25,6 +25,12 @@
     - name: Rebooting
       when: reboot == "yes"
       command: reboot
+      async: 1
+      poll: 0
+
+    - name: Wait for the reboot to complete.
+      ansible.builtin.wait_for_connection:
+        timeout: 120
 
   roles:
     - linux-system-roles.selinux
