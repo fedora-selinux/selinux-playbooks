@@ -149,7 +149,21 @@ To prevent unauthorized connection or transfer of information, all booleans whic
 
 ### Selinux_modules
 
-SELinux modules unconfined and permissivedomains are disabled in */files/modules.yml*
+SELinux modules can be managed in */files/modules.yml*.
+
+```sh
+# Usage:
+manage_modules:
+  - { name: '<module name>', priority: '<priority number>', state: '<absent/present>'}
+
+```
+In the /files/modules.yml are disabled modules that manage unconfined and permissive domains.
+
+```sh
+manage_modules:
+      - {name: 'unconfined', state: 'disabled'}
+      - {name: 'permissivedomains', state: 'disabled'}
+```
 
 ## Run Ansible playbook
 
