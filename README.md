@@ -25,11 +25,17 @@ The Ansible tool has to be installed to configure and apply playbooks.  For SELi
 Download SELinux configuration in Ansible:
 
 ```
-$ git clone https://github.com/5umm3r15/SELinux-hardening.git
+$ git clone https://github.com/5umm3r15/SELinux-playbooks.git
+```
+
+Move into SELinux hardening directory:
+
+```
+$ cd SELinux-playbooks/selinux-hardening
 ```
 
 ### Hosts
-Currently, a configuration is targeted on the localhost.  In the directory inventory is the file hosts.yaml, in which can be defined hosts.
+Currently, a configuration is targeted on the localhost.  In the directory *inventory* is the file **hosts.yaml**, in which can be defined hosts.
 ```sh
 [group]
 address
@@ -168,7 +174,6 @@ manage_modules:
 ## Run Ansible playbook
 
 ```
-$ cd selinux-hardening
 # ansible-playbook selinux-playbook.yml -i inventory/hosts
 ```
 
